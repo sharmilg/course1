@@ -17,7 +17,7 @@ class Person:
 
 class Member(Person):
     def __init__(self, name, age, gender, membership):
-        super().__init__(name, age, gender)
+        Person.__init__(self,name, age, gender)
         self.membership = membership
 
     def introduce(self):
@@ -26,7 +26,7 @@ class Member(Person):
 
 class Author(Person):
     def __init__(self, name, age, gender, books_written):
-        super().__init__(name, age, gender)
+        Person.__init__(self,name, age, gender)
         self.books_written = books_written
 
     def introduce(self):
@@ -38,16 +38,14 @@ class AuthorMember(Member, Author):
         Author.__init__(self, name, age, gender, books_written)
 
     def introduce(self):
-        return f"{super(Member, self).introduce()} I have written {self.books_written} books."
+        return f"I am {self.name}, {self.age} years old.I am {self.gender}. I have a {self.membership} membership and I have written book {self.books_written}"
+
+members = []
+member1 = AuthorMember("John",24,"Male","Platinum","CDE")
+member2 = AuthorMember("Sita", 24,"Female", "basic","ABC")
+members.append(member1)
+members.append(member2)
+for member in members:
+    print(member.introduce())
 
 
-# Example usage
-person1 = Person("Sita", 30, "female")
-person2 = Member("Hari", 40, "male", "basic")
-person3 = Author("Ram", 50, "male", "ABC")
-person4 = AuthorMember("Diya", 35, "female", "premium", "CDE")
-
-print(person1.introduce())
-print(person2.introduce())
-print(person3.introduce())
-print(person4.introduce())
