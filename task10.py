@@ -34,15 +34,6 @@ elevator = Elevator(0, 5)
 elevator.go_to_floor(5)
 elevator.go_to_floor(0)
 
-class Building:
-    def __init__(self, bottom_floor, top_floor, num_elevators):
-        self.bottom_floor = bottom_floor
-        self.top_floor = top_floor
-        self.elevators = [
-            Elevator(bottom_floor, top_floor)
-            for i in range(num_elevators)
-        ]
-
 # Extend the previous program by creating a Building class. The initializer parameters for the class are the
 # numbers of the bottom and top floors and the number of elevators in the building. When a building is
 # created, the building creates the required number of elevators. The list of elevators is stored as a
