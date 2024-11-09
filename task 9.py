@@ -4,7 +4,34 @@
 # where you create a new car (registration number ABC-123, maximum speed 142 km/h). Finally, print out all the
 # properties of the new car.
 
-#defining class
+class Elevator:
+    def __init__(self, bottom_floor, top_floor):
+        self.bottom_floor = bottom_floor
+        self.top_floor = top_floor
+        self.current_floor = bottom_floor
+
+    def go_to_floor(self, target_floor):
+        if target_floor > self.current_floor:
+            while self.current_floor < target_floor:
+                self.floor_up()
+        elif target_floor < self.current_floor:
+            while self.current_floor > target_floor:
+                self.floor_down()
+
+    def floor_up(self):
+        if self.current_floor < self.top_floor:
+            self.current_floor += 1
+            print(f"Elevator {self.current_floor} up")
+
+    def floor_down(self):
+        if self.current_floor > self.bottom_floor:
+            self.current_floor -= 1
+            print(f"Elevator {self.current_floor} down")
+
+# main program
+elevator = Elevator(1, 7)
+elevator.go_to_floor(7)
+elevator.go_to_floor(5)
 
 class Car:
     count = 0
@@ -45,7 +72,6 @@ print(f"Registration number: {New_car.registration_number}, Maximum speed: {New_
 # Extend the main program so that the speed of the car is first increased by +30 km/h, then +70 km/h and finally +50
 # km/h. Then print out the current speed of the car. Finally, use the emergency brake by forcing a -200 km/h change
 # on the speed and then print out the final speed. The  travelled distance does not have to be updated yet.
-
 
 class Car:
     count = 0
