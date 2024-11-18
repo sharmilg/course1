@@ -79,7 +79,7 @@ app = Flask(__name__)
 connection = mysql.connector.connect(
     user="sharmu",
     password="sharmilg",
-    host="localhost",
+    host="127.0.0.1",
     port="3306",
     database="flight_game",
     charset="utf8mb4",
@@ -100,7 +100,7 @@ def fetch_airport_info(icao_code):
                 "Location": result[1]
             }
     except(TypeError, ValueError):
-        return "Invalid Input: *Please enter a valid icao code", 400
+        return "Invalid Input: Please enter a valid ICAO code", 400
 
 @app.route('/airport/<string:icao_code>', methods=['GET'])
 def get_airport_info(icao_code):
@@ -109,7 +109,7 @@ def get_airport_info(icao_code):
         if airport:
             return jsonify(airport)
     except(TypeError, ValueError):
-        return "Invalid Input: *Please enter a valid icao code", 400
+        return "Invalid Input: Please enter a valid ICAO code", 400
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port= 5000, debug=True, use_reloader=False)
